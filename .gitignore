@@ -1,0 +1,8 @@
+# Ignore all files in the DSA Lab directory
+/DSA Lab/*
+
+# Do not ignore .c files in the DSA Lab directory
+!/DSA Lab/*.c
+
+# Additionally, if you want to keep the .gitignore itself
+!.gitignore

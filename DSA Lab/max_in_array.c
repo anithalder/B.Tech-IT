@@ -16,5 +16,5 @@ void main(){
             max = arr[i];
         }
     }
-    printf("The maximum element in the array is: %d", max);
+    printf("The maximum element in the array is: %d\n", max);
 }

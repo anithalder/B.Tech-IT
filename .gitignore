@@ -1,9 +1,10 @@
-# Do not ignore .c files in the DSA Lab directory
-!/DSA Lab/Assignment 1/*.cpp
-!/DSA Lab/Assignment 2/*.cpp
-
 # Ignore all files in the DSA Lab directory
+/DSA Lab/Assignment */*
 /DSA Lab/*
+# Do not ignore .c files in the DSA Lab directory
+!/DSA Lab/Assignment *
+!/DSA Lab/Assignment */*.c
+!/DSA Lab/Assignment */*.cpp
 
 # Additionally, if you want to keep the .gitignore itself
 !.gitignore

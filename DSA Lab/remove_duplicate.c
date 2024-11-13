@@ -23,7 +23,7 @@ int main()
 
     remove_duplicate(arr, &num);
 
-    printf("The new array is: ");
+    printf("The array after remove duplicate is: ");
     for (int i = 0; i < num; i++)
     {
         printf(" %d", arr[i]);

@@ -3,6 +3,7 @@
 
 # Do not ignore .c files in the DSA Lab directory
 !/DSA Lab/*.c
+!/DSA Lab/*.cpp
 
 # Additionally, if you want to keep the .gitignore itself
 !.gitignore

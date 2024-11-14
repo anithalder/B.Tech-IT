@@ -79,7 +79,7 @@ void displayList()
 {
     if (!head)
     {
-        cout << "\nList is empty!\n"
+        cout << "\n\tList is empty!\n"
              << endl;
         return;
     }
@@ -90,7 +90,7 @@ void displayList()
         cout << p->data << "->";
         p = p->next;
     }
-    cout << " NULL\n"
+    cout << "NULL\n"
          << endl;
 }
 

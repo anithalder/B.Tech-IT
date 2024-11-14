@@ -38,7 +38,7 @@ int main()
             insertNode(value);
             break;
         case 2:
-            // reverseList();
+            reverseList();
             break;
         case 0:
             freeList();
@@ -87,15 +87,33 @@ void displayList()
     cout << "\n\tList is: ";
     while (p != NULL)
     {
-        cout << p->data << " -> ";
+        cout << p->data << "->";
         p = p->next;
     }
-    cout << "NULL\n"
+    cout << " NULL\n"
          << endl;
 }
 
 void reverseList()
 {
+    if (head == NULL || head->next == NULL)
+        return;
+
+    node *prevNode = head,
+         *currNode = prevNode->next;
+
+    while (currNode != NULL)
+    {
+        node *nextNode = currNode->next;
+        currNode->next = prevNode;
+
+        // Updated
+        prevNode = currNode;
+        currNode = nextNode;
+    }
+
+    head->next = NULL;
+    head = prevNode;
 }
 
 void freeList()

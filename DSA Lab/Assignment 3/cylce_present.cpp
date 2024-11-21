@@ -22,12 +22,12 @@ int main()
 
     if (checkCycle()) // Call the function to detect a cycle
     {
-        cout << "\n\tIn this list cycle present!"
+        cout << "\n\tIn this list cycle present!\n\n"
              << endl;
     }
     else
     {
-        cout << "\n\tIn this list cycle not present!"
+        cout << "\n\tIn this list cycle not present!\n\n"
              << endl;
     }
 
@@ -64,6 +64,30 @@ void createCyclicList()
 
     // Create a cycle (node5 points back to node2)
     node5->next = NULL;
+}
+
+void displayList()
+{
+    if (!head)
+    {
+        cout << "\n\tList is empty!\n"
+             << endl;
+        return;
+    }
+
+    node *p = head;
+    int count = 0; // Prevent infinite loop for cyclic list
+    cout << "\n\tList is: ";
+    while (p != NULL && count < 15)
+    {
+        cout << p->data << "->";
+        p = p->next;
+        count++;
+    }
+    if (count == 15)
+        cout << "... (cycle detected)\n";
+    else
+        cout << "NULL\n";
 }
 
 void freeList()

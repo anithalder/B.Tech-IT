@@ -1,59 +1,63 @@
 #include <iostream>
 using namespace std;
 
-typedef struct node
+typedef struct Node
 {
     int data;
-    node *next;
-} node;
+    Node *next;
 
-node *head = NULL;
+    Node(int data, Node *next = NULL)
+    {
+        this->data = data;
+        this->next = next;
+    }
+} Node;
 
-node *createNode(int);
-void createCyclicList();
+Node *head = NULL;
+
+Node *createNode(int);
+Node *findNthFromEnd(int);
+void createList();
 void displayList();
 void freeList();
-bool checkCycle(); // Function to detect and handle cycle (to be implemented by you)
 
 int main()
 {
-    createCyclicList(); // Create a hardcoded list with a cycle
-    cout << "\nThe list has been created with a cycle.\n";
+    cout << '\n';
 
-    if (checkCycle()) // Call the function to detect a cycle
-    {
-        cout << "\n\tIn this list cycle present!\n\n"
-             << endl;
-    }
+    createList();
+    displayList();
+
+    int n;
+    cout << "\tEnter the n'th node: ";
+    cin >> n;
+
+    Node *result = findNthFromEnd(n);
+    if (result)
+        cout << "\tThe " << n << "'th node from end of list is: "
+             << result->data << endl;
     else
-    {
-        cout << "\n\tIn this list cycle not present!\n\n"
-             << endl;
-    }
+        cout << "Invalid value of n!" << endl;
 
     freeList(); // Cleanup
-    cout << "Exiting...\n";
+    cout << "\tExiting...\n\n";
 
     return 0;
 }
 
-node *createNode(int data)
+Node *createNode(int data)
 {
-    node *newNode = new node();
-    newNode->data = data;
-    newNode->next = NULL;
-
-    return newNode;
+    return new Node(data, NULL);
 }
 
-void createCyclicList()
+void createList()
 {
-    // Create nodes
-    node *node1 = createNode(1);
-    node *node2 = createNode(2);
-    node *node3 = createNode(3);
-    node *node4 = createNode(4);
-    node *node5 = createNode(5);
+    // Create Nodes
+    Node *node1 = createNode(1);
+    Node *node2 = createNode(2);
+    Node *node3 = createNode(3);
+    Node *node4 = createNode(4);
+    Node *node5 = createNode(5);
 
     // Link nodes to form a list
     head = node1;
@@ -62,7 +66,6 @@ void createCyclicList()
     node3->next = node4;
     node4->next = node5;
 
-    // Create a cycle (node5 points back to node2)
     node5->next = NULL;
 }
 
@@ -74,30 +77,45 @@ void displayList()
              << endl;
         return;
     }
-
-    node *p = head;
-    int count = 0; // Prevent infinite loop for cyclic list
+    Node *p = head;
     cout << "\n\tList is: ";
-    while (p != NULL && count < 15)
+    while (p != NULL)
     {
         cout << p->data << "->";
         p = p->next;
-        count++;
     }
-    if (count == 15)
-        cout << "... (cycle detected)\n";
-    else
-        cout << "NULL\n";
+    cout << "NULL\n"
+         << endl;
 }
 
 void freeList()
 {
-    node *temp;
+    Node *temp;
     while (head != nullptr)
     {
         temp = head;
         head = head->next;
         delete temp;
     }
-    cout << "\nAll nodes freed." << endl;
+    cout << "\n\tAll nodes freed." << endl;
+}
+
+Node *findNthFromEnd(int n)
+{
+    Node *slow = head, *fast = head;
+
+    for (int i = 0; i < n; i++)
+    {
+        if (fast == NULL)
+            return NULL;
+        fast = fast->next;
+    }
+
+    while (fast != NULL)
+    {
+        slow = slow->next;
+        fast = fast->next;
+    }
+
+    return slow;
 }

@@ -27,7 +27,7 @@ int main()
     }
     else
     {
-        cout << "\n\tIn this list cycle present!\n\n"
+        cout << "\n\tIn this list cycle not present!\n\n"
              << endl;
     }
 
@@ -100,22 +100,4 @@ void freeList()
         delete temp;
     }
     cout << "\nAll nodes freed." << endl;
-}
-
-// Placeholder function for cycle detection
-bool checkCycle()
-{
-    node *turtle = head, *rabbit = head;
-
-    while (rabbit != NULL && rabbit->next != NULL)
-    {
-        turtle = turtle->next;
-        rabbit = rabbit->next->next;
-
-        if (turtle == rabbit)
-        {
-            return true;
-        }
-    }
-    return false;
 }

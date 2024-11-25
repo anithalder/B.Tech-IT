@@ -69,7 +69,7 @@ void createList()
     node6->next = node7;
     node7->next = node8;
 
-    node8->next = node2;
+    node8->next = node3;
     node5->next = NULL;
 }
 

@@ -8,3 +8,4 @@
 
 # Additionally, if you want to keep the .gitignore itself
 !.gitignore
+/.metadata/

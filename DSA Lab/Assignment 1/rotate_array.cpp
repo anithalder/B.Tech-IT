@@ -16,6 +16,12 @@ int main()
     printf("The position of rotation: ");
     scanf("%d", &pos);
 
+    if (pos < 0)
+    {
+        printf("Invalid input\n");
+        return 0;
+    }
+
     printf("The array is:");
     for (int i = 0; i < num; ++i)
         printf(" %d", arr[i]);

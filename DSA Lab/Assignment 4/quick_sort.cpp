@@ -10,7 +10,7 @@ int main()
     int arr[] = {2, 1, 5, 8, 3, 6}, size = sizeof(arr) / sizeof(arr[0]) - 1;
 
     cout << "The unsorted array is: ";
-    for (int i = 0; i < size; i++)
+    for (int i = 0; i <= size; i++)
         cout << " " << arr[i];
 
     cout << endl;
@@ -18,7 +18,7 @@ int main()
     quick_sort(arr, 0, size);
 
     cout << "The sorted array is: ";
-    for (int i = 0; i < size; i++)
+    for (int i = 0; i <= size; i++)
         cout << " " << arr[i];
 
     cout << endl;
@@ -52,6 +52,7 @@ int partition(int *arr, int start, int end)
             swap(&arr[i], &arr[j]);
     }
     swap(&arr[start], &arr[j]);
+    
     return j;
 }
 

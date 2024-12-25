@@ -4,36 +4,33 @@
 
 void reverse(int arr[], int n);
 
-void main()
+int main()
 {
     int arr[max], num, pos;
     printf("Enter how many elements you want: ");
     scanf("%d", &num);
-
+    if (num < 1)
+    {
+        printf("Invalid input\n");
+        exit(0);
+    }
     printf("Enter the array elements: ");
     for (int i = 0; i < num; ++i)
-    {
         scanf("%d", &arr[i]);
-    }
 
     printf("The array is:");
     for (int i = 0; i < num; ++i)
-    {
         printf(" %d", arr[i]);
-    }
     printf("\n");
 
     reverse(arr, num);
 
     printf("The reverse array is:");
     for (int i = 0; i < num; ++i)
-    {
         printf(" %d", arr[i]);
-    }
     printf("\n");
+    return 0;
 }
-
-// github token : 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
 
 void reverse(int arr[], int n)
 {

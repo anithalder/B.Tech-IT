@@ -2,6 +2,7 @@
 /DSA Lab/Assignment */*
 /DSA Lab/*
 # Do not ignore .c files in the DSA Lab directory
+!/DSA Lab/*.docx
 !/DSA Lab/Assignment *
 !/DSA Lab/Assignment */*.c
 !/DSA Lab/Assignment */*.cpp

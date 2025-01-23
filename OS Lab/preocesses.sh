@@ -61,7 +61,7 @@ display_all_info() {
 
 # Menu to perform the actions
 while true; do
-    echo "\nProcess Management Options:"
+    echo -e "\nProcess Management Options:"
     echo "1. Create a process"
     echo "2. Kill a process"
     echo "3. Display process scheduling information"
@@ -71,7 +71,7 @@ while true; do
     echo "7. Display all process information"
     echo "8. Exit"
 
-    echo "Choose an option (1-8):"
+    echo -n "Choose an option (1-8):"
     read choice
 
     case $choice in

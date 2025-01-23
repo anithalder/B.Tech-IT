@@ -17,18 +17,13 @@ int main(int argc, char const *argv[])
 
   printf("Enter the elements (from 1 to %d): ", num);
   for (int i = 0; i < num; i++)
-  {
     scanf("%d", &arr[i]);
-  }
 
   for (int i = 0; i < num - 1; i++)
-  {
     sum += arr[i]; // Sum of entered numbers
-  }
 
   // Calculate the expected sum of the first 'num' natural numbers
   expected_sum = num * (num + 1) / 2;
-  printf(" %d %d ", sum, expected_sum);
 
   // Find the missing number
   printf("The missing number is: %d\n", expected_sum - sum);

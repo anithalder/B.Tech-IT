@@ -1,10 +1,15 @@
 version = 1
+<<<<<<< HEAD
 requires-python = ">=3.12"
+=======
+requires-python = ">=3.13"
+>>>>>>> 16177b9fb6eeb3c0cfdb8488afcd72c9e77f846a
 
 [[package]]
 name = "b-tech-it"
 version = "0.1.0"
 source = { virtual = "." }
+<<<<<<< HEAD
 dependencies = [
     { name = "ruff" },
 ]
@@ -36,3 +41,5 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/10/98/ed6b56a30ee76771c193ff7ceeaf1d2acc98d33a1a27b8479cbdb5c17a23/ruff-0.8.4-py3-none-win_amd64.whl", hash = "sha256:f21a1143776f8656d7f364bd264a9d60f01b7f52243fbe90e7670c0dfe0cf65d", size = 9660086 },
     { url = "https://files.pythonhosted.org/packages/13/9f/026e18ca7d7766783d779dae5e9c656746c6ede36ef73c6d934aaf4a6dec/ruff-0.8.4-py3-none-win_arm64.whl", hash = "sha256:9183dd615d8df50defa8b1d9a074053891ba39025cf5ae88e8bcb52edcc4bf08", size = 9074500 },
 ]
+=======
+>>>>>>> 16177b9fb6eeb3c0cfdb8488afcd72c9e77f846a

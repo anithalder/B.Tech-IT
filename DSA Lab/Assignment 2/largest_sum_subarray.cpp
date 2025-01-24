@@ -8,7 +8,10 @@ int main()
 {
     int arr[] = {3, -4, 5, 4, -1, 7, -8};
     int size = sizeof(arr) / sizeof(arr[0]);
-    cout << "The largest sum subarray is " << largestSumSubarray(arr, &size);
+    cout << "The array is: ";
+    for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); i++)
+        cout << arr[i] << " ";
+    cout << "\nThe largest sum subarray is " << largestSumSubarray(arr, &size);
 }
 
 int largestSumSubarray(int *arr, int *size)

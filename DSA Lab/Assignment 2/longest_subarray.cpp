@@ -8,6 +8,11 @@ int main()
     int arr[] = {1, 2, 3, 4, 5}, len = INT_MIN, givenSum = 6;
     int start = -1, end = -1; // Initialize start and end
 
+    cout << "The array is: ";
+    for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); i++)
+        cout << arr[i] << " ";
+    cout << "\nThe given sum is: " << givenSum;
+
     for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); i++)
     {
         int sum = 0;
@@ -31,7 +36,7 @@ int main()
         cout << "No subarray found with the given sum." << endl;
     else
     {
-        cout << "The longest subarray of sum " << givenSum << " is: [";
+        cout << "\nThe longest subarray of sum " << givenSum << " is: [";
         for (int i = start; i <= end; i++)
         {
             cout << arr[i];

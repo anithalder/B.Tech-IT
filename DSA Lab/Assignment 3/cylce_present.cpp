@@ -10,29 +10,26 @@ typedef struct node
 node *head = NULL;
 
 node *createNode(int);
+node *checkCycle(); // Function to detect and handle cycle (to be implemented by you)
 void createCyclicList();
 void displayList();
 void freeList();
-bool checkCycle(); // Function to detect and handle cycle (to be implemented by you)
 
 int main()
 {
     createCyclicList(); // Create a hardcoded list with a cycle
-    cout << "\nThe list has been created with a cycle.\n";
+    displayList();      // Display the list
 
-    if (checkCycle()) // Call the function to detect a cycle
-    {
-        cout << "\n\tIn this list cycle present!\n\n"
+    if (!checkCycle()) // Call the function to detect a cycle
+        cout << "\n\tIn this list cycle not present!"
              << endl;
-    }
     else
-    {
-        cout << "\n\tIn this list cycle present!\n\n"
+        cout << "\n\tIn this list cycle present!"
              << endl;
-    }
 
     freeList(); // Cleanup
-    cout << "Exiting...\n";
+    cout << "\tExiting...\n"
+         << endl;
 
     return 0;
 }
@@ -63,7 +60,7 @@ void createCyclicList()
     node4->next = node5;
 
     // Create a cycle (node5 points back to node2)
-    node5->next = NULL;
+    node5->next = node2; // Change to node2 to create a cycle
 }
 
 void displayList()
@@ -78,20 +75,45 @@ void displayList()
     node *p = head;
     int count = 0; // Prevent infinite loop for cyclic list
     cout << "\n\tList is: ";
-    while (p != NULL && count < 15)
+    while (p != NULL && count < 12)
     {
         cout << p->data << "->";
         p = p->next;
         count++;
     }
-    if (count == 15)
-        cout << "... (cycle detected)\n";
+    if (count == 12)
+        cout << "...\n";
     else
         cout << "NULL\n";
 }
 
 void freeList()
 {
+    if (!head)
+    {
+        cout << "\n\tList is already empty." << endl;
+        return;
+    }
+
+    // Use checkCycle to detect the meeting point if there's a cycle
+    node *meetingPoint = checkCycle();
+
+    if (meetingPoint != NULL) // If a cycle exists
+    {
+        node *slow = head;
+
+        // Find the start of the cycle
+        while (slow->next != meetingPoint->next)
+        {
+            slow = slow->next;
+            meetingPoint = meetingPoint->next;
+        }
+
+        // Break the cycle
+        meetingPoint->next = NULL;
+    }
+
+    // Free the list nodes
     node *temp;
     while (head != nullptr)
     {
@@ -99,23 +121,21 @@ void freeList()
         head = head->next;
         delete temp;
     }
-    cout << "\nAll nodes freed." << endl;
+
+    cout << "\n\tAll nodes freed." << endl;
 }
 
 // Placeholder function for cycle detection
-bool checkCycle()
+node *checkCycle()
 {
     node *turtle = head, *rabbit = head;
-
     while (rabbit != NULL && rabbit->next != NULL)
     {
         turtle = turtle->next;
         rabbit = rabbit->next->next;
 
         if (turtle == rabbit)
-        {
-            return true;
-        }
+            return turtle;
     }
-    return false;
+    return NULL;
 }

@@ -14,7 +14,7 @@ node *createNode(int);
 node *createList();
 node *mergeList();
 void displayList(node *);
-void freeList();
+void freeList(node *);
 
 int main()
 {
@@ -33,9 +33,10 @@ int main()
     cout << "2nd List: ";
     displayList(head2);
     cout << "Merge List: ";
-    displayList(mergeList());
+    node *mergedList = mergeList();
+    displayList(mergedList);
 
-    freeList(); // Cleanup
+    freeList(mergedList); // Cleanup
     cout << "Exiting...\n";
 
     return 0;
@@ -80,19 +81,13 @@ node *createList()
     return head;
 }
 
-void freeList()
+void freeList(node *head)
 {
     node *temp;
-    while (head1 != nullptr)
+    while (head != nullptr)
     {
-        temp = head1;
-        head1 = head1->next;
-        delete temp;
-    }
-    while (head2 != nullptr)
-    {
-        temp = head2;
-        head2 = head2->next;
+        temp = head;
+        head = head->next;
         delete temp;
     }
     cout << "\nAll nodes freed." << endl;

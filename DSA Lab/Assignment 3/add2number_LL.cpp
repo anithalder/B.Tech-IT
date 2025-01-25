@@ -15,7 +15,7 @@ typedef struct Node
 } Node;
 
 // Function prototypes
-void createList(Node *&head);
+void createList(Node *&head, int);
 void displayList(Node *head);
 void freeList(Node *head);
 void insertAtTail(Node *&head, Node *&tail, int data);
@@ -30,9 +30,9 @@ int main()
     // Create lists
     cout << '\n'
          << "Creating the first list...." << endl;
-    createList(first);
+    createList(first, 345);
     cout << "Creating the second list...." << endl;
-    createList(second);
+    createList(second, 45);
 
     // Display the lists
     cout << "\nFirst List: ";
@@ -47,7 +47,7 @@ int main()
 
     // Display the result
     cout << "Sum List: ";
-    displayList(sum);
+    displayList(sum); // No need to reverse again here
 
     // Free memory
     freeList(first);
@@ -59,26 +59,24 @@ int main()
     return 0;
 }
 
-// Function to create a linked list
-void createList(Node *&head)
+// Function to create a linked list from a number
+void createList(Node *&head, int number)
 {
-    // Hardcoding the first list (2 -> 4 -> 3 -> NULL)
-    if (!head)
+    if (number == 0)
     {
-        head = new Node(2);
-        Node *tail = head;
-        tail->next = new Node(4);
-        tail = tail->next;
-        tail->next = new Node(3);
+        head = new Node(0); // Handle the case for 0
+        return;
     }
-    else
+
+    while (number > 0)
     {
-        // Hardcoding the second list (5 -> 6 -> 7 -> NULL)
-        head = new Node(5);
-        Node *tail = head;
-        tail->next = new Node(6);
-        tail = tail->next;
-        tail->next = new Node(7);
+        int digit = number % 10; // Extract the last digit
+        Node *newNode = new Node(digit);
+
+        newNode->next = head; // Insert at the beginning (most significant digit)
+        head = newNode;       // Move the head to the new node
+
+        number /= 10; // Remove the last digit
     }
 }
 
@@ -112,7 +110,6 @@ void freeList(Node *head)
         head = head->next;
         delete temp;
     }
-    // cout << "All nodes freed." << endl;
 }
 
 // Function to reverse a linked list
@@ -157,48 +154,35 @@ Node *add(Node *first, Node *second)
     int carry = 0;
     Node *ansHead = NULL, *ansTail = NULL;
 
-    while (first != NULL || second != NULL || carry != 0)
+    while (first != NULL && second != NULL)
     {
-        int sum = carry;
-
-        if (first != NULL && second != NULL)
-        {
-            sum = first->data + second->data;
-            // sum += second->data;
-            first = first->next;
-            second = second->next;
-        }
-
+        int sum = carry + first->data + second->data;
         int digit = sum % 10;
         insertAtTail(ansHead, ansTail, digit);
         carry = sum / 10;
+        first = first->next;
+        second = second->next;
     }
 
     while (first != NULL)
     {
-        int sum = carry;
-
-        if (first != NULL)
-        {
-            sum += first->data;
-            first = first->next;
-        }
-
+        int sum = carry + first->data;
         int digit = sum % 10;
         insertAtTail(ansHead, ansTail, digit);
         carry = sum / 10;
+        first = first->next;
     }
-
     while (second != NULL)
     {
+        int sum = carry + second->data;
+        int digit = sum % 10;
+        insertAtTail(ansHead, ansTail, digit);
+        carry = sum / 10;
+        second = second->next;
+    }
+    while (carry != 0)
+    {
         int sum = carry;
-
-        if (second != NULL)
-        {
-            sum += second->data;
-            second = second->next;
-        }
-
         int digit = sum % 10;
         insertAtTail(ansHead, ansTail, digit);
         carry = sum / 10;

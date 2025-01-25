@@ -37,7 +37,7 @@ int main()
         cout << "\tThe " << n << "'th node from end of list is: "
              << result->data << endl;
     else
-        cout << "Invalid value of n!" << endl;
+        cout << "\n\tInvalid value of n!" << endl;
 
     freeList(); // Cleanup
     cout << "\tExiting...\n\n";

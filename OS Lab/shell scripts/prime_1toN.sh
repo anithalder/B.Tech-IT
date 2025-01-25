@@ -1,12 +1,9 @@
 read -p "Enter the limit: " limit
-
 if ((limit <= 0)); then
     echo -e "\n\tInvalid input\n"
     exit
 fi
-
-echo -n "The prime numbers upto $limit are: "
-
+echo -n "The prime numbers up to $limit are: "
 for ((i = 1; i <= limit; i++)); do
     count=0
     for ((j = 2; j <= i / 2; j++)); do
@@ -18,5 +15,4 @@ for ((i = 1; i <= limit; i++)); do
         echo -n "$i "
     fi
 done
-
 echo

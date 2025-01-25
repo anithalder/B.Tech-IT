@@ -6,7 +6,7 @@ void reverse(int arr[], int n);
 
 int main()
 {
-    int arr[max], num, pos;
+    int arr[max], num;
     printf("Enter how many elements you want: ");
     scanf("%d", &num);
     if (num < 1)
@@ -34,10 +34,9 @@ int main()
 
 void reverse(int arr[], int n)
 {
-    int temp;
     for (int i = 0; i < n / 2; i++)
     {
-        temp = arr[i];
+        int temp = arr[i];
         arr[i] = arr[n - i - 1];
         arr[n - i - 1] = temp;
     }

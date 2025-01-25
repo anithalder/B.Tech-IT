@@ -1,6 +1,5 @@
 #include <iostream>
-#include <vector>
-#include <climits> // Use INT_MIN from <climits>
+#include <climits>
 using namespace std;
 
 int main()
@@ -9,14 +8,14 @@ int main()
     int start = -1, end = -1; // Initialize start and end
 
     cout << "The array is: ";
-    for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); i++)
+    for (int i = 0; i < (sizeof(arr) / sizeof(arr[0])); i++)
         cout << arr[i] << " ";
     cout << "\nThe given sum is: " << givenSum;
 
-    for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); i++)
+    for (int i = 0; i < (sizeof(arr) / sizeof(arr[0])); i++)
     {
         int sum = 0;
-        for (int j = i; j < sizeof(arr) / sizeof(arr[0]); j++)
+        for (int j = i; j < (sizeof(arr) / sizeof(arr[0])); j++)
         {
             // for (int k = i; k <= j; k++) // Change to <= to include arr[j]
             sum += arr[j];

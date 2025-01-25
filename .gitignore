@@ -6,8 +6,8 @@
 !/DSA Lab/Assignment *
 !/DSA Lab/Assignment */*.c
 !/DSA Lab/Assignment */*.cpp
-!/DSA Lab/Assignment */DSA Assignment *.jpeg
-!/DSA Lab/Assignment */DSA Assignment *.pdf
+!/DSA Lab/DSA Assignment *.jpeg
+!/DSA Lab/DSA Assignment *.pdf
 
 # Additionally, if you want to keep the .gitignore itself
 !.gitignore

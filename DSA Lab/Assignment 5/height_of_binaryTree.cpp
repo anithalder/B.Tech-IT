@@ -33,36 +33,6 @@ int main()
          << "\n\n"
          << endl;
 
-    // while (1)
-    // {
-    //     cout << "\nMenu:\n";
-    //     cout << "1. Insert Node in the tree\n";
-    //     cout << "2. Delete Node from tree\n";
-    //     cout << "0. Exit\n";
-    //     printTree(root, 0);
-    //     cout << "\nEnter your choice: ";
-    //     int choice, value;
-    //     cin >> choice;
-
-    //     switch (choice)
-    //     {
-    //     case 1:
-    //         cout << "Enter value to insert: ";
-    //         cin >> value;
-    //         insertBinaryTree(root, value);
-    //         break;
-    //     case 2:
-    //         cout << "The height of the current tree is: " << heightCalculate(root);
-    //         break;
-    //     case 0:
-    //         freeTree(root);
-    //         cout << "\nExiting...\n\n";
-    //         exit(0);
-    //     default:
-    //         cout << "Invalid choice. Try again." << endl;
-    //     }
-    // }
-
     return 0;
 }
 

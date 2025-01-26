@@ -5,19 +5,19 @@ void remove_duplicate(int *arr, int *num);
 
 int main()
 {
-    int arr[MAX], num;
-    printf("Enter how many elements you want (max %d): ", MAX);
-    scanf("%d", &num);
-    if (num <= 0 || num > MAX)
-    {
-        printf("\n\tInvalid input!\n\n");
-        return 1; // Exit on invalid input
-    }
-    printf("Enter the array elements: ");
-    for (int i = 0; i < num; i++)
-    {
-        scanf("%d", &arr[i]);
-    }
+    int arr[] = {1, 2, 3, 2, 4, 5}, num = sizeof(arr) / sizeof(arr[0]);
+    // printf("Enter how many elements you want (max %d): ", MAX);
+    // scanf("%d", &num);
+    // if (num <= 0 || num > MAX)
+    // {
+    //     printf("\n\tInvalid input!\n\n");
+    //     return 1; // Exit on invalid input
+    // }
+    // printf("Enter the array elements: ");
+    // for (int i = 0; i < num; i++)
+    // {
+    //     scanf("%d", &arr[i]);
+    // }
     remove_duplicate(arr, &num);
     printf("The array after remove duplicate is: ");
     for (int i = 0; i < num; i++)

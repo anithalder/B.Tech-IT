@@ -4,7 +4,7 @@ using namespace std;
 
 int main()
 {
-    int arr[] = {1, 2, 3, 4, 5}, len = INT_MIN, givenSum = 6;
+    int arr[] = {1, 2, 3, 4, 5}, len = INT_MIN, givenSum = 7;
     int start = -1, end = -1; // Initialize start and end
 
     cout << "The array is: ";
@@ -19,7 +19,7 @@ int main()
         {
             // for (int k = i; k <= j; k++) // Change to <= to include arr[j]
             sum += arr[j];
-            if (sum <= givenSum)
+            if (sum == givenSum)
             {
                 if (j - i + 1 > len) // Update length and start/end indices
                 {

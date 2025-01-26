@@ -7,10 +7,19 @@ int partition(int *arr, int start, int end);
 
 int main()
 {
-    int arr[] = {2, 1, 5, 8, 3, 6}, size = sizeof(arr) / sizeof(arr[0]) - 1;
-
+    int arr[10], size;
+    cout << "How many element you want to insert: ";
+    cin >> size;
+    if (size <= 0)
+    {
+        cout << "Invalid input";
+        exit(0);
+    }
+    cout << "Enter the array elements: ";
+    for (int i = 0; i < size; i++)
+        cin >> arr[i];
     cout << "The unsorted array is: ";
-    for (int i = 0; i <= size; i++)
+    for (int i = 0; i < size; i++)
         cout << " " << arr[i];
 
     cout << endl;
@@ -18,7 +27,7 @@ int main()
     quick_sort(arr, 0, size);
 
     cout << "The sorted array is: ";
-    for (int i = 0; i <= size; i++)
+    for (int i = 0; i < size; i++)
         cout << " " << arr[i];
 
     cout << endl;
@@ -48,11 +57,11 @@ int partition(int *arr, int start, int end)
         while (arr[j] > pivot)
             j--;
 
-        if (j > i)
+        if (i < j)
             swap(&arr[i], &arr[j]);
     }
     swap(&arr[start], &arr[j]);
-    
+
     return j;
 }
 

@@ -6,7 +6,17 @@ void bubble_sort(int *, int);
 
 int main()
 {
-    int arr[] = {2, 1, 5, 8, 3, 6}, size = sizeof(arr) / sizeof(arr[0]) - 1;
+    int arr[10], size = sizeof(arr) / sizeof(arr[0]) - 1;
+    cout << "How many element you want to insert: ";
+    cin >> size;
+    if (size <= 0)
+    {
+        cout << "Invalid input";
+        exit(0);
+    }
+    cout << "Enter the array elements: ";
+    for (int i = 0; i < size; i++)
+        cin >> arr[i];
 
     cout << "The unsorted array is: ";
     for (int i = 0; i < size; i++)
@@ -32,11 +42,7 @@ void bubble_sort(int *arr, int size)
         for (int j = 0; j < size - i; j++)
         {
             if (arr[j] > arr[j + 1])
-            {
-                int temp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = temp;
-            }
+                swap(arr[j], arr[j + 1]);
         }
     }
 }

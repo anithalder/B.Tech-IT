@@ -6,8 +6,20 @@ void mergeSort(int *, int, int);
 
 int main()
 {
-    int arr[] = {2, 4, 1, 6, 7, 9};
-    int start = 0, end = (sizeof(arr) / sizeof(arr[0]) - 1);
+    int size;
+    cout << "How many element you want to insert: ";
+    cin >> size;
+    if (size <= 0)
+    {
+        cout << "Invalid input";
+        exit(0);
+    }
+
+    int arr[size]; // Dynamically allocate based on the size input
+    int start = 0, end = size;
+    cout << "Enter the array elements: ";
+    for (int i = 0; i < size; i++)
+        cin >> arr[i];
 
     cout << "Before sorting the array: ";
     for (int i = start; i <= end; i++)

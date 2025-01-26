@@ -16,117 +16,41 @@ typedef struct Node
 
 Node *root = NULL;
 
-void createBST();
+void createTree();
 Node *createNode(int);
 void freeTree(Node *root);
 void printTree(Node *, int);
-void insertBST(Node *&, int);
-Node *deleteNodeBST(Node *, int);
-Node *inOrderPredecessor(Node *ptr);
+bool isBST(Node *);
 
 int main()
 {
-    createBST(); // Initialize the BST with some predefined values.
-
-    while (1)
-    {
-        cout << "\nMenu:\n";
-        cout << "1. Insert Node in the tree\n";
-        cout << "2. Delete Node from tree\n";
-        cout << "0. Exit\n";
-        printTree(root, 0);
-        cout << "\nEnter your choice: ";
-        int choice, value;
-        cin >> choice;
-
-        switch (choice)
-        {
-        case 1:
-            cout << "Enter value to insert: ";
-            cin >> value;
-            insertBST(root, value);
-            break;
-        case 2:
-            cout << "Enter value to delete: ";
-            cin >> value;
-            root = deleteNodeBST(root, value);
-            break;
-        case 0:
-            freeTree(root);
-            cout << "\nExiting...\n\n";
-            exit(0);
-        default:
-            cout << "Invalid choice. Try again." << endl;
-        }
-    }
-
+    createTree(); // Initialize the BST with some predefined values.
+    printTree(root, 0);
+    if (isBST(root))
+        cout << "\n\nThe tree is a Binary Search Tree.\n";
+    else
+        cout << "\n\nThe tree is not a Binary Search Tree.\n";
     return 0;
 }
 
-void insertBST(Node *&ptr, int value)
+bool isBST(Node *root)
 {
-    if (ptr == NULL)
-    {
-        ptr = createNode(value);
-        return;
-    }
+    if (root == NULL)
+        return true;
 
-    if (value < ptr->data)
-        insertBST(ptr->left, value);
+    if (sizeof(root) > 3)
+        return false;
 
-    else if (value > ptr->data)
-        insertBST(ptr->right, value);
+    if (root->left != NULL && root->left->data > root->data)
+        return false;
 
-    else
-        cout << "\nDuplication is not allowed! " << value << " already exists.\n";
-}
+    if (root->right != NULL && root->right->data < root->data)
+        return false;
 
-Node *deleteNodeBST(Node *ptr, int value)
-{
-    if (ptr == NULL)
-    {
-        cout << "Value " << value << " not found in the tree.\n";
-        return NULL;
-    }
+    if (!isBST(root->left) || !isBST(root->right))
+        return false;
 
-    if (value < ptr->data)
-    {
-        ptr->left = deleteNodeBST(ptr->left, value);
-    }
-    else if (value > ptr->data)
-    {
-        ptr->right = deleteNodeBST(ptr->right, value);
-    }
-    else
-    {
-        // Node with one child or no child
-        if (ptr->left == NULL)
-        {
-            Node *temp = ptr->right;
-            delete ptr;
-            return temp;
-        }
-        else if (ptr->right == NULL)
-        {
-            Node *temp = ptr->left;
-            delete ptr;
-            return temp;
-        }
-
-        // Node with two children
-        Node *inPre = inOrderPredecessor(ptr);
-        ptr->data = inPre->data;
-        ptr->left = deleteNodeBST(ptr->left, inPre->data);
-    }
-    return ptr;
-}
-
-Node *inOrderPredecessor(Node *ptr)
-{
-    ptr = ptr->left;
-    while (ptr->right != NULL)
-        ptr = ptr->right;
-    return ptr;
+    return true;
 }
 
 Node *createNode(int data)
@@ -167,17 +91,22 @@ void freeTree(Node *root)
 }
 
 // Function to create a predefined BST
-void createBST()
+void createTree()
 {
     root = NULL; // Reset root for initialization
 
-    insertBST(root, 8);
-    insertBST(root, 3);
-    insertBST(root, 10);
-    insertBST(root, 1);
-    insertBST(root, 6);
-    insertBST(root, 14);
-    insertBST(root, 4);
-    insertBST(root, 7);
-    insertBST(root, 13);
+    root = createNode(1);
+    Node *node1 = createNode(2);
+    Node *node2 = createNode(3);
+    Node *node3 = createNode(4);
+    Node *node4 = createNode(5);
+    Node *node5 = createNode(6);
+    Node *node6 = createNode(7);
+
+    root->left = node1;
+    root->right = node2;
+    node1->left = node3;
+    node1->right = node4;
+    node2->left = node5;
+    node2->right = node6;
 }

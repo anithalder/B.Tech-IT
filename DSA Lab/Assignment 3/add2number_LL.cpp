@@ -15,7 +15,7 @@ typedef struct Node
 } Node;
 
 // Function prototypes
-void createList(Node *&head, int);
+Node *createList(int);
 void displayList(Node *head);
 void freeList(Node *head);
 void insertAtTail(Node *&head, Node *&tail, int data);
@@ -25,14 +25,12 @@ Node *addTwoLists(Node *first, Node *second);
 
 int main()
 {
-    Node *first = NULL, *second = NULL;
-
     // Create lists
     cout << '\n'
          << "Creating the first list...." << endl;
-    createList(first, 345);
+    Node *first = createList(345);
     cout << "Creating the second list...." << endl;
-    createList(second, 45);
+    Node *second = createList(45);
 
     // Display the lists
     cout << "\nFirst List: ";
@@ -60,12 +58,13 @@ int main()
 }
 
 // Function to create a linked list from a number
-void createList(Node *&head, int number)
+Node *createList(int number)
 {
+    Node *head = NULL;
     if (number == 0)
     {
         head = new Node(0); // Handle the case for 0
-        return;
+        return head;
     }
 
     while (number > 0)
@@ -78,6 +77,7 @@ void createList(Node *&head, int number)
 
         number /= 10; // Remove the last digit
     }
+    return head;
 }
 
 // Function to display a linked list

@@ -104,9 +104,9 @@ void reverseList()
     while (currNode != NULL)
     {
         node *nextNode = currNode->next;
-        currNode->next = prevNode;
+        currNode->next = prevNode; // reverse the link
 
-        // Updated
+        // Updated or move for next link
         prevNode = currNode;
         currNode = nextNode;
     }

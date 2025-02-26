@@ -10,9 +10,6 @@
 !/DSA Lab/DSA Assignment *.jpeg
 !/DSA Lab/DSA Assignment *.pdf
 
-!/OOPs/java_ass/src
-/OOPs/java_ass/bin
-!/OOPs/docx
 
 # Additionally, if you want to keep the .gitignore itself
 !.gitignore

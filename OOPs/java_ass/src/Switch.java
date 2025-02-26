@@ -27,6 +27,7 @@ class Switch {
                 break;
 
             default:
+                System.out.println("Value is: " + arr[choice]);
                 break;
         }
 

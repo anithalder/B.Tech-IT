@@ -8,8 +8,11 @@ class Switch {
         int n = arr.length;
         int choice;
 
-        System.out.print("Enter any choice between " + 0 + " to " + n + ": ");
+        System.out.print("Enter any choice : ");
         switch (choice = sc.nextInt()) {
+            case 0:
+                System.out.println("Value is:" + arr[choice]);
+                break;
             case 1:
                 System.out.println("Value is:" + arr[choice]);
                 break;

@@ -9,7 +9,7 @@
 !/DSA Lab/Assignment */*.cpp
 !/DSA Lab/DSA Assignment *.jpeg
 !/DSA Lab/DSA Assignment *.pdf
-!/OOPs/java_ass/
+!/OOPs/java_ass/lib/*
 
 
 # Additionally, if you want to keep the .gitignore itself

@@ -5,7 +5,6 @@ class Switch {
         Scanner sc = new Scanner(System.in);
 
         int[] arr = { 1, 2, 3, 4, 5 };
-        int n = arr.length;
         int choice;
 
         System.out.print("Enter any choice : ");

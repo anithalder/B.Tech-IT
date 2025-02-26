@@ -1,6 +1,7 @@
 # Ignore all files in the DSA Lab directory
 /DSA Lab/Assignment */*
 /DSA Lab/*
+/OOPs/*
 # Do not ignore .c files in the DSA Lab directory
 !/DSA Lab/*.docx
 !/DSA Lab/Assignment *
@@ -8,6 +9,10 @@
 !/DSA Lab/Assignment */*.cpp
 !/DSA Lab/DSA Assignment *.jpeg
 !/DSA Lab/DSA Assignment *.pdf
+
+!/OOPs/java_ass/src
+/OOPs/java_ass/bin
+!/OOPs/docx
 
 # Additionally, if you want to keep the .gitignore itself
 !.gitignore

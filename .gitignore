@@ -1,6 +1,7 @@
 # Ignore all files in the DSA Lab directory
 /DSA Lab/Assignment */*
 /DSA Lab/*
+/OOPs/java_ass/bin/*
 # Do not ignore .c files in the DSA Lab directory
 !/DSA Lab/*.docx
 !/DSA Lab/Assignment *

@@ -11,41 +11,55 @@ typedef struct _Student
     int marks[5];
 } Student, *PStudent;
 
+typedef struct _Node
+{
+    PStudent student;
+    struct _Node *next;
+} Node, *PNode;
+
 PStudent stdHead = NULL;
 
 void main()
 {
+    int marks[] = {10, 20, 30, 40, 50};
+    insertStudent("John", 1, marks);
+    insertStudent("Doe", 2, marks);
+    insertStudent("Jane", 3, marks);
+    insertStudent("Doe", 4, marks);
+    insertStudent("Jane", 5, marks);
+    displayStudent();
+    freeStudent();
 }
 
 PStudent createStudent(char name[], int rollNo, int marks[])
 {
-    PStudent newStudent = (PStudent)malloc(sizeof(Student));
-    int size = sizeof(marks) / sizeof(marks[0]);
+    PStudent student = (PStudent)malloc(sizeof(Student));
 
-    if (!newStudent)
-    {
-        printf("Memory allocation failed!\n");
-        return NULL;
-    }
+    strcpy(student->name, name);
+    student->rollNo = rollNo;
 
-    strcpy(newStudent->name, name);
-    newStudent->rollNo = rollNo;
+    for (int i = 0; i < 5; i++)
+        student->marks[i] = marks[i];
 
-    for (int i = 0; i < size; i++)
-        newStudent->marks[i] = marks[i];
-
-    return newStudent;
+    return student;
 }
 
 void insertStudent(char name[], int rollNo, int marks[])
 {
-    PStudent temp = stdHead;
-    if (!stdHead)
-        stdHead = createStudent(name, rollNo, marks);
+    PStudent student = createStudent(name, rollNo, marks);
+    PNode node = (PNode)malloc(sizeof(Node));
+
+    node->student = student;
+    node->next = NULL;
+
+    if (stdHead == NULL)
+        stdHead = student;
     else
     {
-        // while (temp != NULL)
-        //     temp
+        PNode temp = stdHead;
+        while (temp->next != NULL)
+            temp = temp->next;
+        temp->next = node;
     }
 }
 

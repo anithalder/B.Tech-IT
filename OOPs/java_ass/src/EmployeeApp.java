@@ -1,6 +1,6 @@
 
 import company.Employee;
-import company.Finance;
+import company.FinanceGroup;
 
 public class EmployeeApp {
     public static void main(String[] args) {
@@ -13,7 +13,7 @@ public class EmployeeApp {
         System.out.println(emp2.name + "'s " + emp2.getSalary(emp2));
 
         // Accessing the employee ID from the Finance group
-        Finance finance = new Finance();
+        FinanceGroup finance = new FinanceGroup();
         System.out.println(emp1.name + "'s Employee ID: " + finance.getEmployeeId(emp1));
         System.out.println(emp2.name + "'s Employee ID: " + finance.getEmployeeId(emp2));
     }

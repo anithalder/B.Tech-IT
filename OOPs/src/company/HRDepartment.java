@@ -7,7 +7,8 @@ public class HRDepartment {
         this.employee = employee;
     }
 
-    void showId() {
+    void showDetails() {
+        System.out.println("Name: " + employee.name);
         System.out.println("ID: " + employee.id);
     }
 }

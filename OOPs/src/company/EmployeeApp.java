@@ -17,14 +17,13 @@ public class EmployeeApp {
         // Create an instance of HRDepartment
         System.out.println("HR Department");
         HRDepartment hr = new HRDepartment(employee);
-        System.out.println("Name: " + employee.name);
-        hr.showId();
+        hr.showDetails();
 
         System.out.println();
 
         // Create an instance of GeneralAccess
         System.out.println("General Access");
         GeneralAccess general = new GeneralAccess();
-        general.showName(employee);
+        general.showDetails(employee);
     }
 }

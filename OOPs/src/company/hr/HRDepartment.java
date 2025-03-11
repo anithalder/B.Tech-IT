@@ -1,14 +1,15 @@
 package company.hr;
 
 import company.Employee;
-import company.Employee.*;
 
-public class HRDepartment extends Employee {
-    public HRDepartment(String name, double salary, int id) {
-        super(name, salary, id);
+public class HRDepartment {
+    private Employee employee;
+
+    public HRDepartment(Employee employee) {
+        this.employee = employee;
     }
 
     public void showId() {
-        System.out.println("ID: " + id);
+        employee.showId();
     }
 }

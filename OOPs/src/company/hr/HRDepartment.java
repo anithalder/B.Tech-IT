@@ -3,7 +3,7 @@ package company.hr;
 import company.Employee;
 
 public class HRDepartment {
-    private Employee employee;
+    Employee employee;
 
     public HRDepartment(Employee employee) {
         this.employee = employee;

@@ -7,8 +7,6 @@ public class EmployeeApp {
 
     public static void main(String[] args) {
         Employee employee = new Employee("John Doe", 50000, 123);
-        System.out.println("Name: " + employee.name);
-        employee.showSalary();
 
         // Create an instance of FinanceDepartment
         System.out.println("Finance Department");

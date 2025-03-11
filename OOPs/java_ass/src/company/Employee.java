@@ -1,22 +1,17 @@
-// Employee salary can be access by the same employee member
-// Employee name can be access by anyone
-// Employee ID can be access by another group in same company
-
 package company;
 
 public class Employee {
-    public String name; // Can be accessed by anyone
-    protected int employeeID; // Can be accessed within same package & subclasses
-    private double salary; // Can be accessed only within this class
+    private double salary;
+    protected int id;
+    public String name;
 
-    public Employee(String name, int employeeID, double salary) {
+    public Employee(String name, double salary, int id) {
         this.name = name;
-        this.employeeID = employeeID;
         this.salary = salary;
+        this.id = id;
     }
 
-    // Method to allow only the employee to access salary
-    public double showSalary() {
+    protected double getSalary() {
         return salary;
     }
 }

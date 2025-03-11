@@ -16,12 +16,10 @@ public class Employee {
         this.id = id;
     }
 
-    // Method to show salary, accessible only within the Employee class
     public void showSalary() {
         System.out.println("Salary: " + salary);
     }
 
-    // Method to show ID, accessible only within the Employee class
     public void showId() {
         System.out.println("ID: " + id);
     }

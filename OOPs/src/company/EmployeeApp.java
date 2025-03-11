@@ -1,7 +1,6 @@
-import company.Employee;
-import company.finance.FinanceDepartment;
+package company;
+
 import company.general.GeneralAccess;
-import company.hr.HRDepartment;
 
 public class EmployeeApp {
 
@@ -18,6 +17,7 @@ public class EmployeeApp {
         // Create an instance of HRDepartment
         System.out.println("HR Department");
         HRDepartment hr = new HRDepartment(employee);
+        System.out.println("Name: " + employee.name);
         hr.showId();
 
         System.out.println();

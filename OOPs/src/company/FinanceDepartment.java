@@ -1,17 +1,15 @@
-package company.finance;
-
-import company.Employee;
+package company;
 
 public class FinanceDepartment {
     Employee employee;
 
-    public FinanceDepartment(Employee employee) {
+    FinanceDepartment(Employee employee) {
         this.employee = employee;
     }
 
-    public void showDetails() {
+    void showDetails() {
         System.out.println("Name: " + employee.name);
-        employee.showId();
+        System.out.println("ID: " + employee.id);
         employee.showSalary();
     }
 }

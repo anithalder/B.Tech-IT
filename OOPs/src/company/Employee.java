@@ -10,17 +10,13 @@ public class Employee {
     // public: accessible from any other class
     public String name;
 
-    public Employee(String name, double salary, int id) {
+    Employee(String name, double salary, int id) {
         this.name = name;
         this.salary = salary;
         this.id = id;
     }
 
-    public void showSalary() {
+    void showSalary() {
         System.out.println("Salary: " + salary);
-    }
-
-    public void showId() {
-        System.out.println("ID: " + id);
     }
 }

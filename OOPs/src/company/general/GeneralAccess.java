@@ -3,7 +3,13 @@ package company.general;
 import company.Employee;
 
 public class GeneralAccess {
-    public void showDetails(Employee employee) {
+    Employee employee;
+
+    public GeneralAccess(Employee employee) {
+        this.employee = employee;
+    }
+
+    public void showDetails() {
         System.out.println("Name: " + employee.name);
     }
 }

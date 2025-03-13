@@ -23,7 +23,7 @@ public class EmployeeApp {
 
         // Create an instance of GeneralAccess
         System.out.println("General Access");
-        GeneralAccess general = new GeneralAccess();
-        general.showDetails(employee);
+        GeneralAccess general = new GeneralAccess(employee);
+        general.showDetails();
     }
 }

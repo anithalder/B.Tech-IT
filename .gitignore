@@ -2,6 +2,7 @@
 /DSA Lab/Assignment */*
 /DSA Lab/*
 /OOPs/java_ass/bin
+/DAA/*.exe
 # Do not ignore .c files in the DSA Lab directory
 !/DSA Lab/*.docx
 !/DSA Lab/Assignment *

@@ -1,7 +1,7 @@
 public class EmployeeDB {
-    String name;
+    protected String name;
     protected int id;
-    protected String email;
+    private String email;
     private double salary;
     static final String companyName = "TCS";
 

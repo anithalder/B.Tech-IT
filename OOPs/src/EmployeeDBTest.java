@@ -25,7 +25,7 @@ public class EmployeeDBTest {
 
         System.out.println("\nEmployee Details:");
         for (EmployeeDB employee : employees) {
-            System.out.println(employee);
+            System.out.println(employee.getName());
         }
 
         sc.close();

@@ -95,12 +95,10 @@ class Supervisor extends Employee {
 // Main class to test the hierarchy
 public class CompanyDB {
     public static void main(String[] args) {
-        List<Employee> employees = new ArrayList<>();
-
         // Create employees
         Employee emp1 = new Employee("John Doe", 1001, "Bachelor's");
-        // emp1.setMailId("john@company.com");
-        // emp1.setDepartment("Engineering");
+        emp1.setMailId("john@company.com");
+        emp1.setDepartment("Engineering");
 
         Manager mgr1 = new Manager("Jane Smith", 2001, "MBA", 8);
         mgr1.setMailId("jane@company.com");
@@ -110,14 +108,11 @@ public class CompanyDB {
         sup1.setMailId("mike@company.com");
         sup1.setDepartment("Operations");
 
-        // Add to list
-        employees.add(emp1);
-        employees.add(mgr1);
-        employees.add(sup1);
-
         // Display all employees
         System.out.println("=== COMPANY STAFF ===");
-        employees.forEach(System.out::println);
+        System.out.println(emp1);
+        System.out.println(mgr1);
+        System.out.println(sup1);
 
         // Display counts
         System.out.println("\n=== EMPLOYEE COUNTS ===");

@@ -53,11 +53,6 @@ class Manager extends Employee {
         totalManagers++;
     }
 
-    /************* ✨ Codeium Command ⭐ *************/
-    /**
-     * @return The total number of managers created
-     */
-    /****** a75b0e56-03fc-43f0-a414-b65bd8785711 *******/
     public static int getTotalManagers() {
         return totalManagers;
     }

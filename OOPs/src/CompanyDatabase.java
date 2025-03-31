@@ -4,7 +4,7 @@ import java.util.List;
 // Base Employee class
 class Employee {
     protected static int totalEmployees = 0;
-    
+
     protected int id;
     protected String name;
     private String mailId;
@@ -19,16 +19,26 @@ class Employee {
     }
 
     // Setters and getters
-    public void setMailId(String mailId) { this.mailId = mailId; }
-    public String getMailId() { return mailId; }
-    public void setDepartment(String department) { this.department = department; }
+    public void setMailId(String mailId) {
+        this.mailId = mailId;
+    }
 
-    public static int getTotalEmployees() { return totalEmployees; }
+    public String getMailId() {
+        return mailId;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public static int getTotalEmployees() {
+        return totalEmployees;
+    }
 
     @Override
     public String toString() {
-        return "ID: " + id + ", Name: " + name + ", Degree: " + degree + 
-               ", Dept: " + department + ", Email: " + mailId;
+        return "ID: " + id + ", Name: " + name + ", Degree: " + degree +
+                ", Dept: " + department + ", Email: " + mailId;
     }
 }
 
@@ -43,8 +53,13 @@ class Manager extends Employee {
         totalManagers++;
     }
 
-    public static int getTotalManagers() { return totalManagers; }
-    public int getYearsOfExperience() { return yearsOfExperience; }
+    public static int getTotalManagers() {
+        return totalManagers;
+    }
+
+    public int getYearsOfExperience() {
+        return yearsOfExperience;
+    }
 
     @Override
     public String toString() {
@@ -63,8 +78,13 @@ class Supervisor extends Employee {
         totalSupervisors++;
     }
 
-    public static int getTotalSupervisors() { return totalSupervisors; }
-    public String getOfficeHours() { return officeHours; }
+    public static int getTotalSupervisors() {
+        return totalSupervisors;
+    }
+
+    public String getOfficeHours() {
+        return officeHours;
+    }
 
     @Override
     public String toString() {
@@ -79,8 +99,8 @@ public class CompanyDatabase {
 
         // Create employees
         Employee emp1 = new Employee("John Doe", 1001, "Bachelor's");
-        emp1.setMailId("john@company.com");
-        emp1.setDepartment("Engineering");
+        // emp1.setMailId("john@company.com");
+        // emp1.setDepartment("Engineering");
 
         Manager mgr1 = new Manager("Jane Smith", 2001, "MBA", 8);
         mgr1.setMailId("jane@company.com");

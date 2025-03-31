@@ -93,7 +93,7 @@ class Supervisor extends Employee {
 }
 
 // Main class to test the hierarchy
-public class CompanyDatabase {
+public class CompanyDB {
     public static void main(String[] args) {
         List<Employee> employees = new ArrayList<>();
 

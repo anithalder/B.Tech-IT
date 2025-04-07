@@ -12,6 +12,10 @@ abstract class Bird {
     abstract void wingSpan();
 
     abstract void habitat();
+
+    abstract void swim();
+
+    abstract void color();
 }
 
 // Non-Flying Bird Category
@@ -59,6 +63,10 @@ class Penguin extends NonFlyingBird {
     void habitat() {
         System.out.println("Penguins are found in cold regions like Antarctica.");
     }
+
+    void color() {
+        System.out.println("Penguins are usually black and white.");
+    }
 }
 
 // Sparrow inherits from FlyingBird
@@ -86,6 +94,14 @@ class Sparrow extends FlyingBird {
     void habitat() {
         System.out.println("Sparrows are found in urban areas and gardens.");
     }
+
+    void swim() {
+        System.out.println("Sparrows cannot swim.");
+    }
+
+    void color() {
+        System.out.println("Sparrows are usually brown and white.");
+    }
 }
 
 public class BirdTaxonomy {
@@ -97,6 +113,7 @@ public class BirdTaxonomy {
         penguin.makeSound();
         penguin.wingSpan();
         penguin.habitat();
+        penguin.color();
         System.out.println("-----------------");
         Sparrow sparrow = new Sparrow("House Sparrow");
         sparrow.eat();

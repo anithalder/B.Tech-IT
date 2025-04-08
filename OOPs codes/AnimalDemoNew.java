@@ -206,74 +206,76 @@ public class AnimalDemoNew {
         for (String line : table)
             System.out.println(line);
 
-        System.out.print("\nAsk a question (e.g., 'Penguin is bird?'): ");
-        String question = sc.nextLine().trim();
+        while (true) {
+            System.out.print("\nAsk a question (e.g., 'Penguin is bird?') or type 'quit': ");
+            String question = sc.nextLine().trim();
 
-        String[] parts = question.split(" ");
-        if (parts.length < 3) {
-            System.out.println("Invalid question format.");
-            return;
+            String[] parts = question.split(" ");
+            if (parts.length < 3) {
+                return;
+            }
+
+            String subject = parts[0].toLowerCase();
+            String verb = parts[1].toLowerCase();
+            String object = parts[2].toLowerCase().replace("?", "");
+
+            Animal animal = null;
+            switch (subject) {
+                case "penguin":
+                    animal = new Penguin();
+                    if ((verb.equals("is") && object.equals("bird")) && animal instanceof Bird) {
+                        System.out.println("Yes, Penguin is a bird.");
+                    } else if (verb.equals("can") && object.equals("fly")) {
+                        ((Penguin) animal).fly();
+                    } else if (verb.equals("can") && object.equals("swim")) {
+                        ((Penguin) animal).swim();
+                    } else if (verb.equals("eat")) {
+                        ((Penguin) animal).eat();
+                    } else {
+                        System.out.println("I don't know the answer to that.");
+                    }
+                    break;
+
+                case "sparrow":
+                    animal = new Sparrow();
+                    if ((verb.equals("is") && object.equals("bird")) && animal instanceof Bird) {
+                        System.out.println("Yes, Sparrow is a bird.");
+                    } else if (verb.equals("can") && object.equals("fly")) {
+                        ((Sparrow) animal).fly();
+                    } else if (verb.equals("eat")) {
+                        animal.eat();
+                    }
+                    break;
+
+                case "crocodile":
+                    animal = new Crocodile();
+                    if ((verb.equals("is") && object.equals("reptile")) && animal instanceof Reptile) {
+                        System.out.println("Yes, Crocodile is a reptile.");
+                    } else if (verb.equals("can") && object.equals("swim")) {
+                        ((Crocodile) animal).swim();
+                    } else if (verb.equals("eat")) {
+                        animal.eat();
+                    }
+                    break;
+
+                case "human":
+                    animal = new Human();
+                    if ((verb.equals("is") && object.equals("mammal")) && animal instanceof Mammal) {
+                        System.out.println("Yes, Human is a mammal.");
+                    } else if (verb.equals("can") && object.equals("walk")) {
+                        ((Human) animal).walk();
+                    } else if (verb.equals("eat")) {
+                        animal.eat();
+                    }
+                    break;
+
+                case "quit":
+                    System.out.println("Exiting the program.");
+                    return;
+
+                default:
+                    System.out.println("Unknown animal.");
+            }
         }
-
-        String subject = parts[0].toLowerCase();
-        String verb = parts[1].toLowerCase();
-        String object = parts[2].toLowerCase().replace("?", "");
-
-        Animal animal = null;
-
-        switch (subject) {
-            case "penguin":
-                animal = new Penguin();
-                if ((verb.equals("is") && object.equals("bird")) && animal instanceof Bird) {
-                    System.out.println("Yes, Penguin is a bird.");
-                } else if (verb.equals("can") && object.equals("fly")) {
-                    ((Penguin) animal).fly();
-                } else if (verb.equals("can") && object.equals("swim")) {
-                    ((Penguin) animal).swim();
-                } else if (verb.equals("eat")) {
-                    ((Penguin) animal).eat();
-                } else {
-                    System.out.println("I don't know the answer to that.");
-                }
-                break;
-
-            case "sparrow":
-                animal = new Sparrow();
-                if ((verb.equals("is") && object.equals("bird")) && animal instanceof Bird) {
-                    System.out.println("Yes, Sparrow is a bird.");
-                } else if (verb.equals("can") && object.equals("fly")) {
-                    ((Sparrow) animal).fly();
-                } else if (verb.equals("eat")) {
-                    animal.eat();
-                }
-                break;
-
-            case "crocodile":
-                animal = new Crocodile();
-                if ((verb.equals("is") && object.equals("reptile")) && animal instanceof Reptile) {
-                    System.out.println("Yes, Crocodile is a reptile.");
-                } else if (verb.equals("can") && object.equals("swim")) {
-                    ((Crocodile) animal).swim();
-                } else if (verb.equals("eat")) {
-                    animal.eat();
-                }
-                break;
-
-            case "human":
-                animal = new Human();
-                if ((verb.equals("is") && object.equals("mammal")) && animal instanceof Mammal) {
-                    System.out.println("Yes, Human is a mammal.");
-                } else if (verb.equals("can") && object.equals("walk")) {
-                    ((Human) animal).walk();
-                } else if (verb.equals("eat")) {
-                    animal.eat();
-                }
-                break;
-
-            default:
-                System.out.println("Unknown animal.");
-        }
-
-        sc.close();
     }
 }

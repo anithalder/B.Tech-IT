@@ -52,6 +52,9 @@ public class EmpUserException {
         Scanner sc = new Scanner(System.in);
         ArrayList<Employee> employees = new ArrayList<Employee>(); // Employee list
         List<String> errors = new ArrayList<>(); // Collect errors during validation
+        int id = 0;
+        String name = null; // Employee fields
+        long phone = 0; // Employee fields
 
         System.out.println("Enter Employee data in the format {id, name, phone, id, name, phone, ...}: ");
         String input = sc.nextLine();
@@ -66,24 +69,27 @@ public class EmpUserException {
         for (int i = 0; i < parts.length; i += 3) {
             try {
                 // Validate ID
-                int id = validateID(parts[i]);
+                id = validateID(parts[i]);
             } catch (InvalidIDException e) {
                 errors.add("Employee " + (i / 3 + 1) + ": ID " + e.getMessage());
             }
 
             try {
                 // Validate Name
-                String name = validateName(parts[i + 1].trim());
+                name = validateName(parts[i + 1].trim());
             } catch (InvalidNameException e) {
                 errors.add("Employee " + (i / 3 + 1) + ": Name " + e.getMessage());
             }
 
             try {
                 // Validate Phone
-                long phone = validatePhone(parts[i + 2]);
+                phone = validatePhone(parts[i + 2]);
             } catch (InvalidPhoneException e) {
-                errors.add("Employee " + (i / 3 + 1) + ": Phone " + e.getMessage());
+                errors.add("Employee " + (i / 3 + 1) + ": Phone No." + e.getMessage());
             }
+
+            // If all validations pass, create an Employee object and add it to the list
+            employees.add(new Employee(id, name, phone));
         }
 
         // Check if any errors were found
@@ -125,7 +131,7 @@ public class EmpUserException {
             }
             return id;
         } catch (NumberFormatException e) {
-            throw new InvalidIDException("must be a valid integer.");
+            throw new InvalidIDException(" must be a valid integer.");
         }
     }
 
@@ -141,7 +147,7 @@ public class EmpUserException {
     private static long validatePhone(String phoneStr) throws InvalidPhoneException {
         try {
             long phone = Long.parseLong(phoneStr);
-            if (phone < 10000 || phone > 99999) {
+            if (String.valueOf(phone).length() != 5) {
                 throw new InvalidPhoneException("must be a 5-digit integer.");
             }
             return phone;

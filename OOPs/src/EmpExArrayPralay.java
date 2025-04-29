@@ -50,7 +50,7 @@ class Employee {
 public class EmpExArrayPralay {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Employee[] employees = new Employee[2]; // Start with a small array
+        ArrayList<Employee> employees = new ArrayList<Employee>(); // Start with a small array
         int count = 0;
         List<String> errors = new ArrayList<>(); // Collect errors during validation
 
@@ -107,7 +107,7 @@ public class EmpExArrayPralay {
             if (index < 1 || index > count) {
                 System.out.println("Invalid index! Please enter an index between 1 and " + count + ".");
             } else {
-                System.out.println("Employee at index " + index + ": " + employees[index - 1]);
+                System.out.println("Employee at index " + index + ": " + employees.get(index - 1));
             }
         } catch (Exception e) {
             System.out.println("An error occurred while retrieving the employee: " + e.getMessage());

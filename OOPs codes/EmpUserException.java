@@ -108,13 +108,7 @@ public class EmpUserException {
         int index = sc.nextInt();
 
         try {
-            // Validate the index before accessing the array
-            if (index < 1 || index > employees.size()) {
-                System.out
-                        .println("Invalid index! Please enter an index between 1 and " + (employees.size() + 1) + ".");
-            } else {
-                System.out.println("Employee at index " + index + ": " + employees.get(index - 1));
-            }
+            System.out.println("Employee at index " + index + ": " + employees.get(index - 1));
         } catch (Exception e) {
             System.out.println("An error occurred while retrieving the employee: " + e.getMessage());
         }
@@ -125,10 +119,10 @@ public class EmpUserException {
     // Method to validate ID
     private static int validateID(String idStr) throws InvalidIDException {
         try {
-            int id = Integer.parseInt(idStr);
-            if (id < 100 || id > 999) {
+            if (idStr.length() != 3) {
                 throw new InvalidIDException("must be a 3-digit integer.");
             }
+            int id = Integer.parseInt(idStr);
             return id;
         } catch (NumberFormatException e) {
             throw new InvalidIDException(" must be a valid integer.");

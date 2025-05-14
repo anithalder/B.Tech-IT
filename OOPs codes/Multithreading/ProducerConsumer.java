@@ -1,33 +1,49 @@
+import java.util.concurrent.atomic.AtomicBoolean;
+
 class SharedArray {
     private int[] array = new int[2];
-    private boolean available = false;
+    private volatile boolean available = false;
+    private AtomicBoolean lock = new AtomicBoolean(false); // test-and-set lock
 
-    public synchronized void produce(int number) {
-        while (available) {
-            try {
-                wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+    // Test-and-Set implementation
+    private void acquireLock() {
+        while (lock.getAndSet(true)) {
+            // busy wait
         }
-        array[0] = number;
-        System.out.print("Produced: " + array[0] + '\t');
-        available = true;
-        notify();
     }
 
-    public synchronized void consume() {
-        while (!available) {
-            try {
-                wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+    private void releaseLock() {
+        lock.set(false);
+    }
+
+    public void produce(int number) {
+        while (true) {
+            acquireLock();
+            if (!available) {
+                array[0] = number;
+                System.out.print("Produced: " + array[0] + '\t');
+                available = true;
+                releaseLock();
+                break;
             }
+            releaseLock(); // if resource unavailable, release lock and retry
+            Thread.yield();
         }
-        array[1] += array[0]; // Add produced number to second position
-        System.out.println("Consumed and added. Array: [" + array[0] + ", " + array[1] + "]");
-        available = false;
-        notify();
+    }
+
+    public void consume() {
+        while (true) {
+            acquireLock();
+            if (available) {
+                array[1] += array[0]; // Add produced number to second position
+                System.out.println("Consumed and added. Array: [" + array[0] + ", " + array[1] + "]");
+                available = false;
+                releaseLock();
+                break;
+            }
+            releaseLock(); // if not available, release lock and retry
+            Thread.yield();
+        }
     }
 }
 
@@ -39,7 +55,7 @@ class Producer extends Thread {
     }
 
     public void run() {
-        for (int i = 0;; i++) { // Produce 10 numbers
+        while (true) {
             int number = (int) (Math.random() * 10) + 1;
             sharedArray.produce(number);
             try {
@@ -59,7 +75,7 @@ class Consumer extends Thread {
     }
 
     public void run() {
-        for (int i = 0;; i++) { // Consume 10 numbers
+        while (true) {
             sharedArray.consume();
             try {
                 Thread.sleep(1000);
